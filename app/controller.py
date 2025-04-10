@@ -6,7 +6,7 @@ from app.journal.logger import log_conversation
 def start():
     while True:
         text = recognize_speech_from_mic()
-        if text.lower() in ['exit', 'quit', 'bye']:
+        if not text or text.lower() in ['exit', 'quit', 'bye']:
             clone_and_speak('Goodbye!')
             break
         response = get_reply(text)

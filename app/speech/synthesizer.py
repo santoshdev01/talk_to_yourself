@@ -1,7 +1,14 @@
 
 import requests
+import io
+import pyaudio
+from pydub import AudioSegment
+import base64
+import json 
+from playsound import playsound
+import os
 
-def clone_and_speak(text, api_key=None):
+def clone_and_speak_old(text, api_key=None):
     project_id = "415251f5-default"
     api_key = "wdoJIX2RKduZDczNRwjAwgtt"
     voice_id = "dd47c982"
@@ -24,6 +31,73 @@ def clone_and_speak(text, api_key=None):
         audio_url = response.json()['audio_url']
         print(f"Audio generated: {audio_url}")
         return audio_url
+    else:
+        print(f"Error: {response.text}")
+        return None
+    
+
+
+def clone_and_speak(text, api_key=None):
+    project_id = "415251f5-default"
+    api_key = "wdoJIX2RKduZDczNRwjAwgtt"
+    voice_id = "dd47c982"
+    url = "https://p.cluster.resemble.ai/synthesize"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "voice_uuid": voice_id,
+        "data": text
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+
+    print(response.status_code)
+    print(response.json().keys())
+    
+
+    if response.status_code == 200:
+        print("Content-Type:", response.headers.get('Content-Type'))
+        print("First few bytes:", response.content[:100])
+        response_content = response.content
+        decoded_response = response_content.decode('utf-8')
+
+        # Parse the JSON string into a Python dictionary
+        response_json = json.loads(decoded_response)
+
+        # Check if the audio_content is present
+        if 'audio_content' in response_json:
+            # Extract the base64-encoded audio content
+            audio_content = response_json["audio_content"]
+
+            # Decode the base64 audio content
+            decoded_audio = base64.b64decode(audio_content)
+
+            # Load the decoded audio content into pydub (Assuming it's WAV format)
+            audio = AudioSegment.from_wav(io.BytesIO(decoded_audio))  # If it's a different format, use from_file()
+            audio.export("output.wav", format="wav")
+            playsound("output.wav")
+            # Play the audio using pyaudio
+            p = pyaudio.PyAudio()
+
+            # Open a stream to play the audio
+            stream = p.open(format=p.get_format_from_width(audio.sample_width),
+                            channels=audio.channels,
+                            rate=audio.frame_rate,
+                            output=True)
+
+            # Stream the audio to the speakers
+            stream.write(audio.raw_data)
+
+            # Close the stream and terminate
+            stream.stop_stream()
+            stream.close()
+            os.remove("output.wav")
+            p.terminate()
+        else:
+            print(f"Error: {response.text}")
+            return None
     else:
         print(f"Error: {response.text}")
         return None

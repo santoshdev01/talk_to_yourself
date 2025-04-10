@@ -9,3 +9,6 @@ scipy
 librosa
 tqdm
 pydub
+wave
+pydub
+playsound
