@@ -1,2 +1,3 @@
-# talk_to_yourself
-A Fun Persona Project to build a voice based personal assistant which talks to yourself
+# Talk To Yourself (Voice to Voice Assistant)
+
+A personal voice assistant that listens, replies, and logs your conversations.
