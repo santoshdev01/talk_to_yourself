@@ -1,3 +1,11 @@
 speechrecognition
-pyttsx3
+speechRecognition
+requests
 pyaudio
+gTTS
+torch
+numpy
+scipy
+librosa
+tqdm
+pydub

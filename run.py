@@ -1,3 +1,3 @@
-from app.main import main
+from app.main import start
 
-main()
+start()
