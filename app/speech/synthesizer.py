@@ -38,9 +38,9 @@ def clone_and_speak_old(text, api_key=None):
 
 
 def clone_and_speak(text, api_key=None):
-    project_id = "415251f5-default"
-    api_key = "wdoJIX2RKduZDczNRwjAwgtt"
-    voice_id = "dd47c982"
+    project_id = ""
+    api_key = ""
+    voice_id = ""
     url = "https://p.cluster.resemble.ai/synthesize"
     headers = {
         "Authorization": f"Bearer {api_key}",
