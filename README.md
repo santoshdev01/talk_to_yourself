@@ -7,7 +7,7 @@ This project integrates **speech-to-text**, **AI-based responses**, and **voice 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/santoshdev01/talk_to_yourself_ai
+   git clone https://github.com/santoshdev01/talk_to_yourself
    ```
 
 2. Install dependencies:
