@@ -7,7 +7,7 @@ def start():
     while True:
         text = recognize_speech_from_mic()
         if not text or text.lower() in ['exit', 'quit', 'bye']:
-            clone_and_speak('Goodbye!')
+            clone_and_speak('Good Bye See you later')
             break
         response = get_reply(text)
         clone_and_speak(response)

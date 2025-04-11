@@ -1,0 +1,13 @@
+app/nlp/__pycache__/chatbot.cpython-313.pyc
+app/nlp/__pycache__/chatbot.cpython-313.pyc
+app/__pycache__/controller.cpython-313.pyc
+app/nlp/__pycache__/chatbot.cpython-313.pyc
+app/__pycache__/controller.cpython-313.pyc
+app/speech/__pycache__/synthesizer.cpython-313.pyc
+app/speech/__pycache__/synthesizer.cpython-313.pyc
+app/__pycache__/controller.cpython-313.pyc
+*.wav
+*.pyc
+*/__pycache__/*
+app/__pycache__/controller.cpython-313.pyc
+app/nlp/__pycache__/chatbot.cpython-313.pyc

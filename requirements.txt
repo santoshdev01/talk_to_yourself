@@ -12,3 +12,5 @@ pydub
 wave
 pydub
 playsound
+openai
+transformers

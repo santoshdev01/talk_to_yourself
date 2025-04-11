@@ -9,9 +9,9 @@ from playsound import playsound
 import os
 
 def clone_and_speak_old(text, api_key=None):
-    project_id = "415251f5-default"
-    api_key = "wdoJIX2RKduZDczNRwjAwgtt"
-    voice_id = "dd47c982"
+    project_id = ""
+    api_key = ""
+    voice_id = ""
 
     url = f"https://api.resemble.ai/v1/projects/{project_id}/speak"
     
@@ -78,23 +78,7 @@ def clone_and_speak(text, api_key=None):
             audio = AudioSegment.from_wav(io.BytesIO(decoded_audio))  # If it's a different format, use from_file()
             audio.export("output.wav", format="wav")
             playsound("output.wav")
-            # Play the audio using pyaudio
-            p = pyaudio.PyAudio()
-
-            # Open a stream to play the audio
-            stream = p.open(format=p.get_format_from_width(audio.sample_width),
-                            channels=audio.channels,
-                            rate=audio.frame_rate,
-                            output=True)
-
-            # Stream the audio to the speakers
-            stream.write(audio.raw_data)
-
-            # Close the stream and terminate
-            stream.stop_stream()
-            stream.close()
             os.remove("output.wav")
-            p.terminate()
         else:
             print(f"Error: {response.text}")
             return None
