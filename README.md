@@ -7,7 +7,7 @@ This project integrates **speech-to-text**, **AI-based responses**, and **voice 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/talk_to_yourself.git
+   git clone https://github.com/santoshdev01/talk_to_yourself_ai
    ```
 
 2. Install dependencies:
@@ -22,9 +22,11 @@ This project integrates **speech-to-text**, **AI-based responses**, and **voice 
 
 4. Replace the placeholders `your_project_id`, `your_voice_id`, and `your_resemble_api_key` in the code.
 
+5.Register with OpenAI and setup an api key to get GPT responses from OpenAI through APIs
+
 5. Run the assistant:
    ```bash
-   python app/chatbot.py
+   python run.py
    ```
 
 This will run the assistant, listening for your voice, processing it, and responding using your cloned voice!
